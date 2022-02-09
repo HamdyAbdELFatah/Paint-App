@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Paint App</string>
+    <string name="icon_pencil">Draw on screen</string>
+    <string name="icon_arrow">Draw arrow on screen</string>
+    <string name="icon_rectangle">Draw rectangle shape</string>
+    <string name="icon_ellipse">Daw ellipse shape</string>
+    <string name="icon_palette">Change color of paint tools</string>
+</resources>
