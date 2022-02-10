@@ -3,13 +3,8 @@ package com.edvora.paintapp
 import android.graphics.Paint
 import android.graphics.Path
 import android.os.Bundle
-import android.transition.Slide
-import android.transition.Transition
-import android.transition.TransitionManager
-import android.view.Gravity
+import android.os.PersistableBundle
 import android.view.View
-import android.view.ViewGroup
-import android.view.ViewGroupOverlay
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
@@ -58,6 +53,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         colorPaletteBinding.buttonGreen.setOnClickListener(this)
         colorPaletteBinding.buttonBlue.setOnClickListener(this)
         colorPaletteBinding.buttonBlack.setOnClickListener(this)
+    }
+
+    override fun onSaveInstanceState(savedInstanceState:Bundle) {
+        savedInstanceState.apply {
+            putString("lastPaintToolUsed", lastPaintToolUsed.toString())
+            putBoolean("colorPaletteVisibility", colorPaletteBinding.root.isVisible)
+        }
+        super.onSaveInstanceState(savedInstanceState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val colorPaletteVisibility = savedInstanceState.getBoolean("colorPaletteVisibility")
+        val lastPaintToolKey = savedInstanceState.getString("lastPaintToolUsed")
+        lastPaintToolUsed = ToolsPaint.valueOf(lastPaintToolKey?:"Pencil")
+        clearPaintToolsBackGround()
+        if(colorPaletteVisibility) {
+            colorPaletteBinding.root.visibility = View.VISIBLE
+            binding.buttonPalette.setPaintToolSelected()
+        }else{
+            lastToolUsed(lastPaintToolUsed).setPaintToolSelected()
+        }
     }
 
     override fun onClick(view: View) {
