@@ -115,10 +115,6 @@ class PaintView : View {
     }
 
     private fun touchStart() {
-//        pencilPath.reset()
-//        arrowPath.reset()
-//        rectanglePath.reset()
-//        ellipsePath.reset()
         pencilPath.moveTo(motionTouchEventX, motionTouchEventY)
         currentX = motionTouchEventX
         currentY = motionTouchEventY
@@ -224,13 +220,13 @@ class PaintView : View {
         arrowPath.moveTo(currentX, currentY)
         arrowPath.lineTo(stopX, stopY)
         arrowPath.lineTo(
-            (stopX + Math.cos(rad + Math.PI * 0.75) * 40).toFloat(),
-            (stopY + Math.sin(rad + Math.PI * 0.75) * 40).toFloat()
+            (stopX + cos(rad + Math.PI * 0.75) * 40).toFloat(),
+            (stopY + sin(rad + Math.PI * 0.75) * 40).toFloat()
         )
         arrowPath.moveTo(stopX, stopY)
         arrowPath.lineTo(
-            (stopX + Math.cos(rad - Math.PI * 0.75) * 40).toFloat(),
-            (stopY + Math.sin(rad - Math.PI * 0.75) * 40).toFloat()
+            (stopX + cos(rad - Math.PI * 0.75) * 40).toFloat(),
+            (stopY + sin(rad - Math.PI * 0.75) * 40).toFloat()
         )
         canvas.drawPath(arrowPath, paint.apply { color = currentBrush })
     }

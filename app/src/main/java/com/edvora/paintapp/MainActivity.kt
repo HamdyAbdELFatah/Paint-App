@@ -3,7 +3,6 @@ package com.edvora.paintapp
 import android.graphics.Paint
 import android.graphics.Path
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         colorPaletteBinding.buttonBlack.setOnClickListener(this)
     }
 
-    override fun onSaveInstanceState(savedInstanceState:Bundle) {
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
         savedInstanceState.apply {
             putString("lastPaintToolUsed", lastPaintToolUsed.toString())
             putBoolean("colorPaletteVisibility", colorPaletteBinding.root.isVisible)
@@ -67,12 +66,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onRestoreInstanceState(savedInstanceState)
         val colorPaletteVisibility = savedInstanceState.getBoolean("colorPaletteVisibility")
         val lastPaintToolKey = savedInstanceState.getString("lastPaintToolUsed")
-        lastPaintToolUsed = ToolsPaint.valueOf(lastPaintToolKey?:"Pencil")
+        lastPaintToolUsed = ToolsPaint.valueOf(lastPaintToolKey ?: "Pencil")
         clearPaintToolsBackGround()
-        if(colorPaletteVisibility) {
+        if (colorPaletteVisibility) {
             colorPaletteBinding.root.visibility = View.VISIBLE
             binding.buttonPalette.setPaintToolSelected()
-        }else{
+        } else {
             lastToolUsed(lastPaintToolUsed).setPaintToolSelected()
         }
     }
@@ -196,10 +195,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun View.flipVisibility() {
         val anim: Animation
         visibility = if (!isVisible) {
-            anim = AnimationUtils.loadAnimation(this@MainActivity, R.anim.fade_in);
+            anim = AnimationUtils.loadAnimation(this@MainActivity, R.anim.fade_in)
             View.VISIBLE
         } else {
-            anim = AnimationUtils.loadAnimation(this@MainActivity, R.anim.fade_out);
+            anim = AnimationUtils.loadAnimation(this@MainActivity, R.anim.fade_out)
             View.INVISIBLE
         }
         startAnimation(anim)
