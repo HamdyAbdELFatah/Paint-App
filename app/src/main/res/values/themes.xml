@@ -25,19 +25,11 @@
     </style>
 
     <style name="PaletteColorStyle">
-        <item name="android:layout_width">38dp</item>
-        <item name="android:layout_height">38dp</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="iconPadding">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingLeft">12dp</item>
-        <item name="android:paddingRight">12dp</item>
+        <item name="android:layout_width">@dimen/_32sdp</item>
+        <item name="android:layout_height">@dimen/_32sdp</item>
         <item name="android:minWidth">36dp</item>
         <item name="android:minHeight">36dp</item>
         <item name="android:background">@drawable/paint_tool_selected_background</item>
-
     </style>
 
 </resources>
